@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Quiz</title>
+
+        
     </head>
     <body>
-        <form>
-            <div>
+        <form id="form-quiz">
+            <div id="idioma"> 
                 <label>Qual seu idioma de preferência?</label>
                 <br>
                 <input id="idiomaPortugues" name="idioma" type="radio" value="portugues" checked>
@@ -24,9 +26,10 @@
                 <label for="alemao">Alemão</label>
                 <br>
                 <input id="idiomaRusso" name="idioma" type="radio" value="russo">
-                <label for="russo">Russo</label>                
+                <label for="russo">Russo</label>   
+                <span id="erroidioma" hidden>Escolha uma opção válida!</span>           
             </div>
-            <div>
+            <div id="dinheiro">
                 <label>Quanto dinheiro tenho disponível para essa viagem?</label>
                 <br>
                 <input id="dinheiroCinco" name="dinheiroDisponivel" type="radio" value="5000">
@@ -43,8 +46,9 @@
                 <br>
                 <input id="dinheiroVinteCinco" name="dinheiroDisponivel" type="radio" value="25000">
                 <label for="vinteCincoMil">R$25000</label>
+                <span id="errodinheiro" hidden>Escolha uma opção válida!</span>  
             </div>  
-            <div>
+            <div id="clima">
                 <label>Clima de preferência?</label>
                 <br>
                 <input id="climaCalor" name="climaPreferencia" type="radio" value="calor" checked>
@@ -55,13 +59,16 @@
                 <br>
                 <input id="climaFrio" name="climaPreferencia" type="radio" value="frio">
                 <label for="frio">Frio</label>
+                <span id="erroclima" hidden>Escolha uma opção válida!</span>  
             </div>
             <!-- <div>
                 <label>Pergunta 4:</label>
                 <input id="pergunta4">
             </div> -->
             <br>
-            <button>Testar</button>
+            <button id="botaoTestar">Testar</button>
         </form>
+
+        <script src="../js/valida-quiz.js"></script>
     </body>
 </html>
