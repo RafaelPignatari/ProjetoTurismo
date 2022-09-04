@@ -17,10 +17,11 @@ function getAllCountryLanguages(responseJSON) {
         languages = responseJSON[key].linguas;
         for (let key2 in languages) {
             languageString = languages[key2].nome;
-            if (!nameCollection.includes(languageString))
+            if (!nameCollection.includes(languageString) && languageString != undefined)
                 nameCollection.push(languageString);
         }
     }
     
     return nameCollection;
 }
+

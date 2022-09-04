@@ -13,11 +13,37 @@ async function getLanguageFromContinent() {
     return idiomas;
 }
 
-continente.addEventListener("change", function() {
+continente.addEventListener("change", async function() {
     let idioma = document.getElementById("idioma");
-    let idiomasAPI = getLanguageFromContinent();
+    let idiomasAPI = await getLanguageFromContinent();
+    let label = document.createElement("label");
+    let br = document.createElement("br");
+
+    idioma.innerHTML = '';
+    label.textContent = 'Qual seu idioma de preferência?';
+    idioma.appendChild(label);
+    idioma.appendChild(br);
+
+    for (i in idiomasAPI)
+    {
+        let elemento = document.createElement("input")
+        let label = document.createElement("label")
+        let br = document.createElement("br");
+
+        idiomasAPI[i] = idiomasAPI[i][0].toUpperCase() + idiomasAPI[i].slice(1);
+        label.textContent = idiomasAPI[i];
+        
+        elemento.id = 'idioma' + idiomasAPI[i];
+        elemento.name = 'idioma';
+        elemento.type = 'radio';
+        elemento.value = idiomasAPI[i];
+
+        idioma.appendChild(elemento);
+        idioma.appendChild(label);
+        idioma.appendChild(br);
+        
+    }
     
-    //idioma.append
 })
 
 botaoTestar.addEventListener("click", function(event) {
