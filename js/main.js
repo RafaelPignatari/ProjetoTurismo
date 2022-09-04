@@ -1,14 +1,16 @@
 let botaoTestar = document.querySelector("#botaoTestar");
 let continente = document.querySelector("#continente");
+let paises;
+let cidades = [];
 
 async function getLanguageFromContinent() {
-    let paises = await getIBGECountryInfo();
+    paises = await getIBGECountryInfo();
+    let paisesFiltroContinental;
     let continenteValue = document.querySelector("#continente > input:checked").value;
     let idiomas;
 
-    paises = paises.filter((obj) => obj['localizacao']['regiao']['nome'] == continenteValue)
-    idiomas = getAllCountryLanguages(paises);
-    console.log(idiomas);
+    paisesFiltroContinental = paises.filter((obj) => obj['localizacao']['regiao']['nome'] == continenteValue)
+    idiomas = getAllCountryLanguages(paisesFiltroContinental);
 
     return idiomas;
 }
@@ -29,14 +31,14 @@ continente.addEventListener("change", async function() {
         let elemento = document.createElement("input")
         let label = document.createElement("label")
         let br = document.createElement("br");
-
-        idiomasAPI[i] = idiomasAPI[i][0].toUpperCase() + idiomasAPI[i].slice(1);
-        label.textContent = idiomasAPI[i];
         
         elemento.id = 'idioma' + idiomasAPI[i];
         elemento.name = 'idioma';
         elemento.type = 'radio';
         elemento.value = idiomasAPI[i];
+
+        idiomasAPI[i] = idiomasAPI[i][0].toUpperCase() + idiomasAPI[i].slice(1);
+        label.textContent = idiomasAPI[i];
 
         idioma.appendChild(elemento);
         idioma.appendChild(label);
@@ -46,13 +48,26 @@ continente.addEventListener("change", async function() {
     
 })
 
-botaoTestar.addEventListener("click", function(event) {
-    continente = document.querySelector("#continente > input:checked").value
+botaoTestar.addEventListener("click", async function(event) {
     event.preventDefault(); //Para que o botão não atualize a página de cara.
-    // perguntas.forEach(limpaErros);
-    // perguntas.forEach(validaResposta);
-    
-    // console.log(setObj())
+    let continenteEscolhido = document.querySelector("#continente > input:checked").value;
+    let idiomaEscolhido = document.querySelector("#idioma > input:checked").value;
+    let paisesFiltrados = paises.filter((pais) => pais['localizacao']['regiao']['nome'] == continenteEscolhido && pais['linguas'][0]['nome'] == idiomaEscolhido);
 
-    getLanguageFromContinent();
+    for (let i in paisesFiltrados) {
+        let codigoPais = paisesFiltrados[i].id["ISO-3166-1-ALPHA-2"];
+        let cidadesAPI = await getCitiesbyCountry(codigoPais);
+
+        for(let number in cidadesAPI) {
+            clima = await getWheaterInfo(cidadesAPI[number]["name"]);
+            valorMonetario = await getMonetaryInfo(paisesFiltrados[i]["unidades-monetarias"][0].id["ISO-4217-ALPHA"]);
+            cidadesAPI[number]['temperatura'] = clima['temperatura'];
+            cidadesAPI[number]['pais'] = paisesFiltrados[i].nome.abreviado;
+            cidadesAPI[number]['idioma'] = idiomaEscolhido;   
+            cidadesAPI[number]['moeda'] = valorMonetario;                      
+        }   
+        cidades.push(cidadesAPI);
+    }; 
+
+    console.log(cidades);
 })

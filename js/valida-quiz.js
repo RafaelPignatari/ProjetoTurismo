@@ -1,6 +1,4 @@
-
 perguntas = ["clima", "idioma", "dinheiro"]
-
 
 function setObj(){
     let clima = document.querySelector("#clima > input:checked")
