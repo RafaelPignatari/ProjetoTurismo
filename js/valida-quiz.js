@@ -1,12 +1,6 @@
-botaoAdicionar = document.querySelector("#botaoTestar");
+
 perguntas = ["clima", "idioma", "dinheiro"]
-botaoAdicionar.addEventListener("click", function(event) {
-    event.preventDefault(); //Para que o botão não atualize a página de cara.
-    perguntas.forEach(limpaErros);
-    perguntas.forEach(validaResposta);
-    
-    console.log(setObj())
-})
+
 
 function setObj(){
     let clima = document.querySelector("#clima > input:checked")
