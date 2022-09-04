@@ -1,4 +1,6 @@
-function adicionaOpcao(pais){
+let divMaisInformacoes = document.getElementById("maisInformacoes");
+
+function adicionaMaisInformações(pais){
     let pHistorico = document.createElement("p");
     pHistorico.innerHTML = pais['historico'];
 
@@ -17,14 +19,11 @@ function adicionaOpcao(pais){
     let spanNomeCidade = document.createElement("span");
     spanNomeCidade.innerHTML = "<strong>Nome do cidade:</strong>" + pais['cidade'] + "<br>";
 
-    let divOpcaoDeViagem = document.createElement("div");
-    divOpcaoDeViagem.appendChild(spanNomePais);
-    divOpcaoDeViagem.appendChild(spanNomeCidade);
-    divOpcaoDeViagem.appendChild(spanIdiomas);
-    divOpcaoDeViagem.appendChild(spanMoeda);
-    divOpcaoDeViagem.appendChild(spanClima);
-    divOpcaoDeViagem.appendChild(pHistorico);
-
-    opcoesDeViagem.appendChild(divOpcaoDeViagem);
+    divMaisInformacoes.appendChild(spanNomePais);
+    divMaisInformacoes.appendChild(spanNomeCidade);
+    divMaisInformacoes.appendChild(spanIdiomas);
+    divMaisInformacoes.appendChild(spanMoeda);
+    divMaisInformacoes.appendChild(spanClima);
+    divMaisInformacoes.appendChild(pHistorico);
 }
 
