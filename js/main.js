@@ -88,6 +88,7 @@ botaoTestar.addEventListener("click", async function(event) {
     // else if (climaEscolhido = 'frio'){
     //     console.log(cidades.slice(-3))
     // }
+    
     sessionStorage.setItem("cidades", JSON.stringify(cidades));
     window.location.href = "../Views/opcoesDeViagem.html";
 })

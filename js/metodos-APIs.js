@@ -27,11 +27,15 @@ async function getWheaterInfo(city) {
                 'X-Api-Key': 'ltGCHBdbFL/PPXQTBlyBww==FxmgaTRlWM5qZXAq'
             }
         }).then((reponse) => reponse.json());
-        responseFinal['temperatura'] = responseJSON['temp'];
+        if(responseFinal['temperatura'] == 'undefined') {
+            responseFinal['temperatura'] = " - ";
+        }
+        responseFinal['temperatura'] = responseJSON['temp'] + ' C°';
         return responseFinal;
     }
     catch {
-        return "-"
+        console.log("ENTREI AUQI")
+        return responseFinal['temperatura'] = " - ";
     }
 }
 
@@ -39,11 +43,10 @@ async function getMonetaryInfo(moeda) {
     var moneyToConvert = moeda;
     try {
         if(moneyToConvert != 'BRL') {
-            var BRLTomoneyToConvert = 'BRL-' + moneyToConvert;
+            var BRLTomoneyToConvert =moneyToConvert +'-BRL';
             const responseJSON = await fetch('https://economia.awesomeapi.com.br/last/' + BRLTomoneyToConvert, {
             }).then((reponse) => reponse.json());
-            
-            return responseJSON['BRL' + moeda]['high'];
+            return responseJSON[moeda + 'BRL']['high'];
         }
         else {
             return "1"
