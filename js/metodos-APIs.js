@@ -6,38 +6,51 @@ async function getIBGECountryInfo() {
 }
 
 async function getCitiesbyCountry(country) {
-    const responseJSON = await fetch("https://api.api-ninjas.com/v1/city?limit=3&country=" + country, {
-        headers: {
-            'X-Api-Key': 'ltGCHBdbFL/PPXQTBlyBww==FxmgaTRlWM5qZXAq'
-        }
-    }).then((response) => response.json());
-    
-    return responseJSON;
+    try {
+        const responseJSON = await fetch("https://api.api-ninjas.com/v1/city?limit=3&country=" + country, {
+            headers: {
+                'X-Api-Key': 'ltGCHBdbFL/PPXQTBlyBww==FxmgaTRlWM5qZXAq'
+            }
+        }).then((response) => response.json());
+        return responseJSON;
+    }
+    catch {
+        return "-"
+    }
 }
 
 async function getWheaterInfo(city) {
     responseFinal = {};
-    const responseJSON = await fetch('https://api.api-ninjas.com/v1/weather?city=' + city, {
-        headers: {
-            'X-Api-Key': 'ltGCHBdbFL/PPXQTBlyBww==FxmgaTRlWM5qZXAq'
-        }
-    }).then((reponse) => reponse.json());
-    responseFinal['temperatura'] = responseJSON['temp'];
-    return responseFinal;
+    try {
+        const responseJSON = await fetch('https://api.api-ninjas.com/v1/weather?city=' + city, {
+            headers: {
+                'X-Api-Key': 'ltGCHBdbFL/PPXQTBlyBww==FxmgaTRlWM5qZXAq'
+            }
+        }).then((reponse) => reponse.json());
+        responseFinal['temperatura'] = responseJSON['temp'];
+        return responseFinal;
+    }
+    catch {
+        return "-"
+    }
 }
 
 async function getMonetaryInfo(moeda) {
     var moneyToConvert = moeda;
-
-    if(moneyToConvert != 'BRL') {
-        var BRLTomoneyToConvert = 'BRL-' + moneyToConvert;
-        const responseJSON = await fetch('https://economia.awesomeapi.com.br/last/' + BRLTomoneyToConvert, {
-        }).then((reponse) => reponse.json());
-        
-        return responseJSON['BRL' + moeda]['high'];
-    }
-    else {
-        return "1"
+    try {
+        if(moneyToConvert != 'BRL') {
+            var BRLTomoneyToConvert = 'BRL-' + moneyToConvert;
+            const responseJSON = await fetch('https://economia.awesomeapi.com.br/last/' + BRLTomoneyToConvert, {
+            }).then((reponse) => reponse.json());
+            
+            return responseJSON['BRL' + moeda]['high'];
+        }
+        else {
+            return "1"
+        }
+    } 
+    catch {
+        return "-"
     }
 }
 
