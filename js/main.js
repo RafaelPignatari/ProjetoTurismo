@@ -65,6 +65,7 @@ botaoTestar.addEventListener("click", async function(event) {
             valorMonetario = await getMonetaryInfo(paisesFiltrados[i]["unidades-monetarias"][0].id["ISO-4217-ALPHA"]);
             cidadesAPI[number]['temperatura'] = clima['temperatura'];
             cidadesAPI[number]['pais'] = paisesFiltrados[i].nome.abreviado;
+            cidadesAPI[number]['historico'] = paisesFiltrados[i].historico;
             cidadesAPI[number]['idioma'] = idiomaEscolhido;   
             cidadesAPI[number]['moeda'] = valorMonetario;                      
         }   
@@ -87,7 +88,8 @@ botaoTestar.addEventListener("click", async function(event) {
     // else if (climaEscolhido = 'frio'){
     //     console.log(cidades.slice(-3))
     // }
-    window.location.href = "../";
+    sessionStorage.setItem("cidades", JSON.stringify(cidades));
+    window.location.href = "../Views/opcoesDeViagem.html";
 })
 
 

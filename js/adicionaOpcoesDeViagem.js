@@ -1,22 +1,22 @@
+let cidades = JSON.parse(sessionStorage.getItem("cidades"));
 let opcoesDeViagem = document.getElementById("opcoesDeViagem");
-let opcao = {nome : "Brasil", cidade : "São Paulo"}
-let opcao2 = {nome : "Brasil2", cidade : "São Paulo"}
-let opcao3 = {nome : "Brasil3", cidade : "São Paulo"}
 
-let paises = [opcao, opcao2, opcao3]
-
-function adicionaMaisInformações(paises){
-    for (let index = 0; index < paises.length; index++) {
-        const pais = paises[index];
+function adicionaMaisInformações(cidades){
+    for (let index = 0; index < cidades.length; index++) {
+        const cidade = cidades[index];
         let spanNomePais = document.createElement("span");
-        spanNomePais.innerHTML = "<strong>País:</strong>" + pais['nome'] + " ";
+        spanNomePais.innerHTML = "<strong>País:</strong>" + cidade['pais'] + " ";
 
         let spanNomeCidade = document.createElement("span");
-        spanNomeCidade.innerHTML = "<strong>Cidade:</strong>" + pais['cidade'] + " ";
+        spanNomeCidade.innerHTML = "<strong>Cidade:</strong>" + cidade['name'] + " ";
 
         let buttonMaisInformações = document.createElement("button");
         buttonMaisInformações.innerHTML = "É esse!";
         buttonMaisInformações.value = index;
+        buttonMaisInformações.onclick = function () {
+            sessionStorage.setItem("cidade", JSON.stringify(cidades[this.value]));
+            window.location.href = "../Views/maisInformacoes.html";
+        };
 
         let divOpcaoDeViagem = document.createElement("div");
         divOpcaoDeViagem.appendChild(spanNomePais);
@@ -26,7 +26,6 @@ function adicionaMaisInformações(paises){
         opcoesDeViagem.appendChild(divOpcaoDeViagem);
         opcoesDeViagem.appendChild(document.createElement("br"));
     }
-    
 }
 
-adicionaMaisInformações(paises)
+adicionaMaisInformações(cidades);
