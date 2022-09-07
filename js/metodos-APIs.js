@@ -27,11 +27,13 @@ async function getWheaterInfo(city) {
                 'X-Api-Key': 'ltGCHBdbFL/PPXQTBlyBww==FxmgaTRlWM5qZXAq'
             }
         }).then((reponse) => reponse.json());
-        if(responseFinal['temperatura'] == 'undefined') {
-            responseFinal['temperatura'] = " - ";
+        if (typeof(responseJSON['temp']) != "undefined") {
+            responseFinal['temperatura'] = responseJSON['temp'] + ' C°';
+            return responseFinal;
+        } else {
+            responseFinal['temperatura'] = '-';
+            return responseFinal;
         }
-        responseFinal['temperatura'] = responseJSON['temp'] + ' C°';
-        return responseFinal;
     }
     catch {
         console.log("ENTREI AUQI")
