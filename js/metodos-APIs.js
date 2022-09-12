@@ -74,3 +74,24 @@ function getAllCountryLanguages(responseJSON) {
     
     return nameCollection;
 }
+
+async function getFlights(moeda,origem,destino,chegada,partida) {
+    try{
+        var origem = origem;
+        var destino = destino;
+        var moeda = moeda;
+        var https = 'https://travelpayouts-travelpayouts-flight-data-v1.p.rapidapi.com/v1/prices/monthly?destination=' + destino + '&origin=' + origem + '&length=3&currency=' + moeda;
+       console.log(https);
+        const responseJSON = await fetch
+        (https , {
+            headers: {
+            'X-Access-Token': '6a5137d6f8f202bf06af2a39771f56b1',
+            'X-RapidAPI-Key': '2af99389efmsh21438fb8207ce25p11f7ffjsn11881ae5aa85'
+        }
+        }).then((reponse) => reponse.json());
+        return responseJSON;
+    } 
+    catch {
+        return "Nenhum voo disponível com os dados enviados"
+    }
+}
