@@ -42,10 +42,10 @@ continente.addEventListener("change", async function() {
         
         idioma.appendChild(elemento);
         idioma.appendChild(label);
-        idioma.appendChild(br);
-        
+        idioma.appendChild(br);        
     }
-    
+
+    continente.hidden = true;
 })
 
 botaoTestar.addEventListener("click", async function(event) {
