@@ -1,7 +1,10 @@
 let botaoTestar = document.querySelector("#botaoTestar");
 let continente = document.querySelector("#continente");
+let idioma = document.querySelector('#idioma');
+let dinheiro = document.querySelector("#dinheiro");
 let paises;
 let cidades = [];
+let questoes = [];
 
 async function getLanguageFromContinent() {
     paises = await getIBGECountryInfo();
@@ -16,7 +19,6 @@ async function getLanguageFromContinent() {
 }
 
 continente.addEventListener("change", async function() {
-    let idioma = document.getElementById("idioma");
     let idiomasAPI = await getLanguageFromContinent();
     let label = document.createElement("label");
     let br = document.createElement("br");
@@ -93,4 +95,12 @@ botaoTestar.addEventListener("click", async function(event) {
     window.location.href = "../Views/opcoesDeViagem.html";
 })
 
+idioma.addEventListener("click", function() {
+    idioma.hidden = true;
+    dinheiro.hidden = false;
+})
 
+dinheiro.addEventListener("click", function() {
+    dinheiro.hidden = true;
+    clima.hidden = false;
+})
