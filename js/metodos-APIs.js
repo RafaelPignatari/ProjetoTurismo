@@ -28,7 +28,7 @@ async function getWheaterInfo(city) {
             }
         }).then((reponse) => reponse.json());
         if (typeof(responseJSON['temp']) != "undefined") {
-            responseFinal['temperatura'] = responseJSON['temp'] + ' C°';
+            responseFinal['temperatura'] = responseJSON['temp'];
             return responseFinal;
         } else {
             responseFinal['temperatura'] = '-';

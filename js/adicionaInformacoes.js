@@ -9,7 +9,7 @@ function adicionaMaisInformações(cidade){
     spanIdiomas.innerHTML = "<strong>Idiomas:</strong>" + cidade['idioma'] + "<br>";
 
     let spanClima = document.createElement("span");
-    spanClima.innerHTML = "<strong>Clima:</strong>" + cidade['temperatura'] + " <br>";
+    spanClima.innerHTML = "<strong>Clima:</strong>" + cidade['temperatura'] + "C° <br>";
 
     let spanMoeda = document.createElement("span");
     spanMoeda.innerHTML = "<strong>Moeda:</strong>" + cidade['moeda'] + "<br>";
