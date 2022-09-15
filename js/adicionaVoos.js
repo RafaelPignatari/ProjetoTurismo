@@ -1,28 +1,26 @@
 let voosAPI = JSON.parse(sessionStorage.getItem("voosAPI"));
 
-function CarregaVoos(voosAPI){
-    for (let index = 0; index < voosAPI.length; index++) {
-        const voo = voosAPI['data'][index];
-        
+function carregaVoos(voosAPI){
+    for (let voo in voosAPI.data) {
         let spanMes = document.createElement("span");
-        spanMes.innerHTML = "<strong>Mês:</strong>" + voo ;
+        spanMes.innerHTML = "<strong>Mês: </strong>" + formataDataAPI(voo) +" ";
 
         let spanPreco = document.createElement("span");
-        spanPreco.innerHTML = "<strong>Preço:</strong>" + voo['price'] + " ";
+        spanPreco.innerHTML = "<strong>Preço:</strong> R$" + voosAPI.data[voo]['price'] + " ";
 
         let spanCompanhia = document.createElement("span");
-        spanCompanhia.innerHTML = "<strong>Companhia:</strong>" + voo['airline'] + " ";
+        spanCompanhia.innerHTML = "<strong>Companhia: </strong>" + voosAPI.data[voo]['airline'] + " ";
 
         let spanNrVoo = document.createElement("span");
-        spanNrVoo.innerHTML = "<strong>Número do Voo:</strong>" + voo['flight_number'] + " ";
+        spanNrVoo.innerHTML = "<strong>Número do Voo: </strong>" + voosAPI.data[voo]['flight_number'] + " ";
 
         let spanPartida = document.createElement("span");
-        spanPartida.innerHTML = "<strong>Partida:</strong>" + voo['departure_at'] + " ";
+        spanPartida.innerHTML = "<strong>Partida: </strong>" + formataDataAPI(voosAPI.data[voo]['departure_at']) + " ";
         
         let spanRetorno = document.createElement("span");
-        spanRetorno.innerHTML = "<strong>Retorno:</strong>" + voo['return_at'] + " ";
+        spanRetorno.innerHTML = "<strong>Retorno: </strong>" + formataDataAPI(voosAPI.data[voo]['return_at']) + " ";
 
-        let divVoo = document.createElement("div");
+        let divVoo = document.getElementById("Voos");
 
         divVoo.appendChild(spanMes);
         divVoo.appendChild(spanPreco);
@@ -35,4 +33,25 @@ function CarregaVoos(voosAPI){
     }
 }
 
-CarregaVoos(voosAPI);
+function formataDataAPI(data) {
+    let dataFormatada = "";
+
+    if (data.length <= 7) {
+        dataFormatada = data[5] + data[6] +"/" +data.substring(0, 4);
+    }
+    else{
+        dataFormatada += data[8] + data[9] +"/"; //Dia
+        dataFormatada += data[5] + data[6] +"/";; //Mês
+        dataFormatada += data.substring(0, 4) +" "; //Ano
+
+        dataFormatada += data[11] + data[12] + ":"; //Hora
+        dataFormatada += data[14] + data[15] + ":"; //Minuto
+        dataFormatada += data[17] + data[18] +" "; //Segundo
+
+        dataFormatada += "GMT: " +data[19] +data[20] +data[21];
+    }
+    
+    return dataFormatada;
+}
+
+carregaVoos(voosAPI);

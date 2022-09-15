@@ -36,7 +36,6 @@ async function getWheaterInfo(city) {
         }
     }
     catch {
-        console.log("ENTREI AUQI")
         return responseFinal['temperatura'] = " - ";
     }
 }
@@ -75,13 +74,13 @@ function getAllCountryLanguages(responseJSON) {
     return nameCollection;
 }
 
-async function getFlights(moeda,origem,destino,chegada,partida) {
+async function getFlights(moeda, origem, destino, chegada, partida) {
     try{
         var origem = origem;
         var destino = destino;
         var moeda = moeda;
         var https = 'https://travelpayouts-travelpayouts-flight-data-v1.p.rapidapi.com/v1/prices/monthly?destination=' + destino + '&origin=' + origem + '&length=3&currency=' + moeda;
-       console.log(https);
+        console.log(https);
         const responseJSON = await fetch
         (https , {
             headers: {

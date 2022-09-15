@@ -2,8 +2,7 @@ let cidade = JSON.parse(sessionStorage.getItem("cidade-pais"));
 let voosAPI;
 
 function preencheCidade (cidade){
-    let div = document.getElementById("formularioDeViagem0")
-    
+    let div = document.getElementById("formularioDeViagem0");    
     let label = document.createElement("label");
     let input = document.createElement("input");
     let br = document.createElement("br");
@@ -26,28 +25,23 @@ function preencheCidade (cidade){
 
 preencheCidade(cidade);
 
-Pesquisar.addEventListener("click", async function() {
-    //voosAPI = [];
-
-    let moeda = document.querySelector("#moeda1 > input").value;
+pesquisar.addEventListener("click", async function() {
+    //let moeda = document.querySelector("#moeda1 > input").value;
+    let moeda = "BRL";
     let origem = document.querySelector("#IATAOrigem > input").value;
     let destino = document.querySelector("#IATADestino > input").value;
     let chegada = document.querySelector("#dataChegada > input").value;
     let partida = document.querySelector("#dataPartida > input").value;
 
-    console.log(moeda, origem,destino,chegada,partida)
-    voosAPI = await getFlights(moeda, origem,destino,chegada,partida);
-    console.log(voosAPI);
-    /*
+    voosAPI = await getFlights(moeda, origem, destino, chegada, partida);    
     sessionStorage.setItem("voosAPI", JSON.stringify(voosAPI));
-    window.location.href = "../Views/voos.html";
-    */
-})
+    window.location.href = "../Views/voos.html";    
+});
 
-Preencher.addEventListener("click", function(event) {
-    document.querySelector("#moeda1 > input").value = 'RUB';
+preencher.addEventListener("click", function() {
+    //document.querySelector("#moeda1 > input").value = 'BRL';
     document.querySelector("#IATAOrigem > input").value = 'LED';
     document.querySelector("#IATADestino > input").value = 'MOW';
     document.querySelector("#dataChegada > input").value = '';
     document.querySelector("#dataPartida > input").value = '';
-})
+});

@@ -20,12 +20,13 @@ function adicionaMaisInformações(cidade){
     let spanNomeCidade = document.createElement("span");
     spanNomeCidade.innerHTML = "<strong>Nome da cidade:</strong>" + cidade['name'] + "<br>";
 
-        let buttonPartiu = document.createElement("button");
-        buttonPartiu.innerHTML = "Partiu!";
-        buttonPartiu.onclick = function () {
-            sessionStorage.setItem("cidade-pais", JSON.stringify(cidade['name'] + " - " + cidade['pais']));
-            window.location.href = "../Views/formularioDeViagem.html";
-        };
+    let buttonPartiu = document.createElement("button");
+    buttonPartiu.innerHTML = "Partiu!";
+    
+    buttonPartiu.onclick = function () {
+        sessionStorage.setItem("cidade-pais", JSON.stringify(cidade['name'] + " - " + cidade['pais']));
+        window.location.href = "../Views/formularioDeViagem.html";
+    };
 
     divMaisInformacoes.appendChild(spanNomePais);
     divMaisInformacoes.appendChild(spanNomeCidade);
