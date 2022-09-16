@@ -1,7 +1,8 @@
-let botaoTestar = document.querySelector("#botaoTestar");
+let buttonEnviar = document.querySelector("#buttonEnviar");
 let continente = document.querySelector("#continente");
 let idioma = document.querySelector('#idioma');
 let dinheiro = document.querySelector("#dinheiro");
+let botaoEnviar = document.getElementById("buttonEnviar");
 let paises;
 let cidades = [];
 let questoes = [];
@@ -28,7 +29,7 @@ async function getLanguageFromContinent() {
     return idiomas;
 }
 
-botaoTestar.addEventListener("click", async function(event) {
+buttonEnviar.addEventListener("click", async function(event) {
     event.preventDefault(); //Para que o botão não atualize a página de cara.
     cidades = [];
     let continenteEscolhido = document.querySelector("#continente > input:checked").value;
@@ -123,6 +124,12 @@ dinheiro.addEventListener("click", function(event) {
         return;
     dinheiro.hidden = true;
     clima.hidden = false;
+})
+
+clima.addEventListener("click", function(event) {
+    if(isChecked(event.currentTarget))
+        return;
+    botaoEnviar.style.display = "block";
 })
 
 function isChecked(div){

@@ -64,7 +64,7 @@
             <div id="clima" hidden>
                 <label>Clima de preferência?</label>
                 <br>
-                <input id="climaCalor" name="climaPreferencia" type="radio" value="calor" checked>
+                <input id="climaCalor" name="climaPreferencia" type="radio" value="calor">
                 <label for="calor">Calor</label>
                 <br>
                 <input id="climaAmeno" name="climaPreferencia" type="radio" value="ameno">
@@ -75,7 +75,7 @@
                 <span id="erroclima" hidden>Escolha uma opção válida!</span>  
             </div>
             <br>
-            <button id="botaoTestar">Buscar</button>
+            <button style="display: none;" class="buttonEnviar" id="buttonEnviar">Buscar</button>
         </form>
 
         <script src="../js/metodos-APIs.js"></script>
