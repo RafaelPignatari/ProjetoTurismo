@@ -21,7 +21,7 @@
             <li style="float:right"><a href="">Entrar</a></li>
             <li style="float:right"><a href="">Cadastrar-se</a></li>
         </ul>
-        <form id="form-quiz">
+        <form class="styledDiv" id="form-quiz">
             <div id="continente"> 
                 <label>Para qual continente você deseja ir?</label>
                 <br>
@@ -38,8 +38,7 @@
                 <label for="oceania">Oceania</label>
                 <br>
                 <input id="idiomaAfrica" name="continente" type="radio" value="África">
-                <label for="africa">África</label>   
-                <span id="erroContinente" hidden>Escolha uma opção válida!</span>           
+                <label for="africa">África</label>         
             </div>
             <div id="idioma"></div>
             <div id="dinheiro" hidden> 
@@ -59,7 +58,6 @@
                 <br>
                 <input id="dinheiroVinteCinco" name="dinheiroDisponivel" type="radio" value="25000">
                 <label for="vinteCincoMil">R$25000</label>
-                <span id="errodinheiro" hidden>Escolha uma opção válida!</span>  
             </div>  
             <div id="clima" hidden>
                 <label>Clima de preferência?</label>
@@ -72,10 +70,9 @@
                 <br>
                 <input id="climaFrio" name="climaPreferencia" type="radio" value="frio">
                 <label for="frio">Frio</label>
-                <span id="erroclima" hidden>Escolha uma opção válida!</span>  
             </div>
             <br>
-            <button style="display: none;" class="buttonEnviar" id="buttonEnviar">Buscar</button>
+            <button style="display: none;" class="botao" id="buttonEnviar">Buscar</button>
         </form>
 
         <script src="../js/metodos-APIs.js"></script>

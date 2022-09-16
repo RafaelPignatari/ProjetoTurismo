@@ -54,24 +54,24 @@ buttonEnviar.addEventListener("click", async function(event) {
         cidades = cidades.concat(cidadesAPI);
     }; 
     
-    // cidades.sort(function(a, b){
-    //     return b['temperatura'] - a['temperatura']
-    // })
+    cidades.sort(function(a, b){
+        return b['temperatura'] - a['temperatura']
+    })
 
-    // if (cidades.length < 4 ){console.log(cidades)}
+    if (cidades.length < 4 ){console.log(cidades)}
 
-    // else if (climaEscolhido = 'calor'){
-    //     var test = cidades.slice(3)
-    //     console.log(test)
-    // }
-    // else if (climaEscolhido = 'ameno'){
-    //     var test = cidades.slice(Math.round(qtdCidades/2), Math.round(qtdCidades/2) + 3)
-    //     console.log(test)
-    // }
-    // else if (climaEscolhido = 'frio'){
-    //     var test = cidades.slice(-3)
-    //     console.log(test)
-    // }
+    else if (climaEscolhido = 'calor'){
+        var test = cidades.slice(0, 3)
+        console.log(test)
+    }
+    else if (climaEscolhido = 'ameno'){
+        var test = cidades.slice(Math.round(qtdCidades/2), Math.round(qtdCidades/2) + 3)
+        console.log(test)
+    }
+    else if (climaEscolhido = 'frio'){
+        var test = cidades.slice(cidades.length-3, cidades.length)
+        console.log(test)
+    }
     
     sessionStorage.setItem("cidades", JSON.stringify(cidades));
     window.location.href = "../Views/opcoesDeViagem.html";

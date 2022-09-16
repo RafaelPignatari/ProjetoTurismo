@@ -13,12 +13,14 @@ function adicionaMaisInformações(cidades){
         let buttonMaisInformações = document.createElement("button");
         buttonMaisInformações.innerHTML = "É esse!";
         buttonMaisInformações.value = index;
+        buttonMaisInformações.classList = "botao"
         buttonMaisInformações.onclick = function () {
             sessionStorage.setItem("cidade", JSON.stringify(cidades[this.value]));
             window.location.href = "../Views/maisInformacoes.html";
         };
 
         let divOpcaoDeViagem = document.createElement("div");
+        divOpcaoDeViagem.className = "opcaoDeViagem";
         divOpcaoDeViagem.appendChild(spanNomePais);
         divOpcaoDeViagem.appendChild(spanNomeCidade);
         divOpcaoDeViagem.appendChild(buttonMaisInformações);
