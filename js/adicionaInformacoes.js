@@ -1,4 +1,5 @@
 let divMaisInformacoes = document.getElementById("maisInformacoes");
+let centerDiv = document.getElementById("centerDiv");
 let cidade = JSON.parse(sessionStorage.getItem("cidade"));
 
 function adicionaMaisInformações(cidade){
@@ -22,6 +23,7 @@ function adicionaMaisInformações(cidade){
 
     let buttonPartiu = document.createElement("button");
     buttonPartiu.innerHTML = "Partiu!";
+    buttonPartiu.className = "botao";
     
     buttonPartiu.onclick = function () {
         sessionStorage.setItem("cidade-pais", JSON.stringify(cidade['name'] + " - " + cidade['pais']));
@@ -34,7 +36,7 @@ function adicionaMaisInformações(cidade){
     divMaisInformacoes.appendChild(spanMoeda);
     divMaisInformacoes.appendChild(spanClima);
     divMaisInformacoes.appendChild(pHistorico);
-    divMaisInformacoes.appendChild(buttonPartiu);
+    centerDiv.appendChild(buttonPartiu);
 
 }
 
