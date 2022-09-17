@@ -22,60 +22,61 @@
             <li style="float:right"><a href="">Entrar</a></li>
             <li style="float:right"><a href="">Cadastrar-se</a></li>
         </ul>
-        <form class="styledDiv" id="form-quiz">
-            <div id="continente"> 
-                <label>Para qual continente você deseja ir?</label>
+        <div class="principal" id="principal">
+            <form class="styledDiv" id="form-quiz">
+                <div id="continente"> 
+                    <label>Para qual continente você deseja ir?</label>
+                    <br>
+                    <input id="idiomaAmerica" name="continente" type="radio" value="América">
+                    <label for="america">América</label>
+                    <br>
+                    <input id="idiomaEuropa" name="continente" type="radio" value="Europa">
+                    <label for="europa">Europa</label>
+                    <br>
+                    <input id="idiomaAsia" name="continente" type="radio" value="Ásia">
+                    <label for="asia">Ásia</label>
+                    <br>
+                    <input id="idiomaOceania" name="continente" type="radio" value="Oceania">
+                    <label for="oceania">Oceania</label>
+                    <br>
+                    <input id="idiomaAfrica" name="continente" type="radio" value="África">
+                    <label for="africa">África</label>         
+                </div>
+                <div id="idioma"></div>
+                <div id="dinheiro" hidden> 
+                    <label>Quanto dinheiro tenho disponível para essa viagem?</label>
+                    <br>
+                    <input id="dinheiroCinco" name="dinheiroDisponivel" type="radio" value="5000">
+                    <label for="cincoMil">R$5000</label>
+                    <br>
+                    <input id="dinheiroDez" name="dinheiroDisponivel" type="radio" value="10000">
+                    <label for="dezMil">R$10000</label>
+                    <br>
+                    <input id="dinheiroQuinze" name="dinheiroDisponivel" type="radio" value="15000">
+                    <label for="quinzeMil">R$15000</label>
+                    <br>
+                    <input id="dinheiroVinte" name="dinheiroDisponivel" type="radio" value="20000">
+                    <label for="vinteMil">R$20000</label>
+                    <br>
+                    <input id="dinheiroVinteCinco" name="dinheiroDisponivel" type="radio" value="25000">
+                    <label for="vinteCincoMil">R$25000</label>
+                </div>  
+                <div id="clima" hidden>
+                    <label>Clima de preferência?</label>
+                    <br>
+                    <input id="climaCalor" name="climaPreferencia" type="radio" value="calor">
+                    <label for="calor">Calor</label>
+                    <br>
+                    <input id="climaAmeno" name="climaPreferencia" type="radio" value="ameno">
+                    <label for="ameno">Ameno</label>
+                    <br>
+                    <input id="climaFrio" name="climaPreferencia" type="radio" value="frio">
+                    <label for="frio">Frio</label>
+                </div>
                 <br>
-                <input id="idiomaAmerica" name="continente" type="radio" value="América">
-                <label for="america">América</label>
-                <br>
-                <input id="idiomaEuropa" name="continente" type="radio" value="Europa">
-                <label for="europa">Europa</label>
-                <br>
-                <input id="idiomaAsia" name="continente" type="radio" value="Ásia">
-                <label for="asia">Ásia</label>
-                <br>
-                <input id="idiomaOceania" name="continente" type="radio" value="Oceania">
-                <label for="oceania">Oceania</label>
-                <br>
-                <input id="idiomaAfrica" name="continente" type="radio" value="África">
-                <label for="africa">África</label>         
-            </div>
-            <div id="idioma"></div>
-            <div id="dinheiro" hidden> 
-                <label>Quanto dinheiro tenho disponível para essa viagem?</label>
-                <br>
-                <input id="dinheiroCinco" name="dinheiroDisponivel" type="radio" value="5000">
-                <label for="cincoMil">R$5000</label>
-                <br>
-                <input id="dinheiroDez" name="dinheiroDisponivel" type="radio" value="10000">
-                <label for="dezMil">R$10000</label>
-                <br>
-                <input id="dinheiroQuinze" name="dinheiroDisponivel" type="radio" value="15000">
-                <label for="quinzeMil">R$15000</label>
-                <br>
-                <input id="dinheiroVinte" name="dinheiroDisponivel" type="radio" value="20000">
-                <label for="vinteMil">R$20000</label>
-                <br>
-                <input id="dinheiroVinteCinco" name="dinheiroDisponivel" type="radio" value="25000">
-                <label for="vinteCincoMil">R$25000</label>
-            </div>  
-            <div id="clima" hidden>
-                <label>Clima de preferência?</label>
-                <br>
-                <input id="climaCalor" name="climaPreferencia" type="radio" value="calor">
-                <label for="calor">Calor</label>
-                <br>
-                <input id="climaAmeno" name="climaPreferencia" type="radio" value="ameno">
-                <label for="ameno">Ameno</label>
-                <br>
-                <input id="climaFrio" name="climaPreferencia" type="radio" value="frio">
-                <label for="frio">Frio</label>
-            </div>
-            <br>
-            <button style="display: none;" class="botao" id="buttonEnviar">Buscar</button>
-        </form>
-
+                <button style="display: none;" class="botao" id="buttonEnviar">Buscar</button>
+            </form>
+        </div>
         <script src="../js/metodos-APIs.js"></script>
         <script src="../js/main.js"></script>
     </body>
