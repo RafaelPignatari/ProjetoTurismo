@@ -5,6 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Partiu!!</title>
+
+        <link rel="stylesheet" href="../style/css/turistando.css">
+        <link rel="stylesheet" href="https://fonts.google.com/specimen/Source+Sans+Pro">
+        <link rel="icon" href="../style/images/iconSite.png">
     </head>
     <body>
         <ul id="navPrincipal">
@@ -14,36 +18,36 @@
             <li style="float:right"><a href="">Entrar</a></li>
             <li style="float:right"><a href="">Cadastrar-se</a></li>
         </ul>
-        <h1>Partiu!!</h1>
-        <p>Preencha as informações abaixo e receba informações de preços e datas para sua viagem:</p>
-        <div id = "formularioDeViagem0"></div>
-        
-        <div id="formularioDeViagem">
-            <!-- <div id="moeda1">
-                <label>Moeda</label>
-                <input type="text" name="moeda1" size="40"><br><br> 
-            </div> -->
-            <div id="IATAOrigem">           
-                <label>Código IATA do Local de Origem (Obrigatório)</label>
-                <input type="text" name="IATAOrigem" size="40"><br><br>
-            </div>
-            <div id="IATADestino"> 
-                <label>Código IATA do Local de Destino (Obrigatório)</label>
-                <input type="text" name="IATADestino" size="40"><br><br>
-            </div>
-            <div id="dataChegada">
-                <label>Data de Chegada</label>
-                <input type="text" name="dataChegada" size="40"><br><br>
-            </div>
-            <div id="dataPartida">
-            <label>Data de Partida</label>
-            <input type="text" name="dataPartida" size="40"><br><br>
-            </div>
+        <div class="principal">
+            <h1>Partiu!!</h1>
+            <p>Preencha as informações abaixo e receba informações de preços e datas para sua viagem:</p>
+            
+            <div id="formularioDeViagem">
+                <!-- <div id="moeda1">
+                    <label>Moeda</label>
+                    <input type="text" name="moeda1" size="40"><br><br> 
+                </div> -->
+                <div id="IATAOrigem">           
+                    <label>Código IATA do Local de Origem (Obrigatório)</label>
+                    <input type="text" name="IATAOrigem" size="40"><br><br>
+                </div>
+                <div id="IATADestino"> 
+                    <label>Código IATA do Local de Destino (Obrigatório)</label>
+                    <input type="text" name="IATADestino" size="40"><br><br>
+                </div>
+                <div id="dataChegada">
+                    <label>Data de Chegada</label>
+                    <input type="text" name="dataChegada" size="40"><br><br>
+                </div>
+                <div id="dataPartida">
+                <label>Data de Partida</label>
+                <input type="text" name="dataPartida" size="40"><br><br>
+                </div>
 
-            <button id="pesquisar">Pesquisar</button>
-            <button id="preencher">Preencher</button>
+                <button id="pesquisar">Pesquisar</button>
+                <button id="preencher">Preencher</button>
+            </div>
         </div>
-
         <script src="../js/adicionaFormularioDeViagem.js"></script>
         <script src="../js/metodos-APIs.js"></script>
     </body>
