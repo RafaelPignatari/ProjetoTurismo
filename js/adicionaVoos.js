@@ -21,6 +21,7 @@ function carregaVoos(voosAPI){
         spanRetorno.innerHTML = "<strong>Retorno: </strong>" + formataDataAPI(voosAPI.data[voo]['return_at']) + " ";
 
         let divVoo = document.getElementById("Voos");
+        divVoo.className = "styledDiv";
 
         divVoo.appendChild(spanMes);
         divVoo.appendChild(spanPreco);
