@@ -1,5 +1,4 @@
 let divMaisInformacoes = document.getElementById("maisInformacoes");
-let centerDiv = document.getElementById("centerDiv");
 let cidade = JSON.parse(sessionStorage.getItem("cidade"));
 
 function adicionaMaisInformações(cidade){
@@ -36,7 +35,7 @@ function adicionaMaisInformações(cidade){
     divMaisInformacoes.appendChild(spanMoeda);
     divMaisInformacoes.appendChild(spanClima);
     divMaisInformacoes.appendChild(pHistorico);
-    centerDiv.appendChild(buttonPartiu);
+    divMaisInformacoes.appendChild(buttonPartiu);
 
 }
 
