@@ -2,7 +2,7 @@ let cidade = JSON.parse(sessionStorage.getItem("cidade-pais"));
 let voosAPI;
 
 function preencheCidade (cidade){
-    let div = document.getElementById("formularioDeViagem0");    
+    let div = document.getElementById("formularioDeViagem");    
     let label = document.createElement("label");
     let input = document.createElement("input");
     let br = document.createElement("br");
@@ -38,10 +38,10 @@ pesquisar.addEventListener("click", async function() {
     window.location.href = "../Views/voos.html";    
 });
 
-preencher.addEventListener("click", function() {
-    //document.querySelector("#moeda1 > input").value = 'BRL';
-    document.querySelector("#IATAOrigem > input").value = 'LED';
-    document.querySelector("#IATADestino > input").value = 'MOW';
-    document.querySelector("#dataChegada > input").value = '';
-    document.querySelector("#dataPartida > input").value = '';
-});
+// preencher.addEventListener("click", function() {
+//     //document.querySelector("#moeda1 > input").value = 'BRL';
+//     document.querySelector("#IATAOrigem > input").value = 'LED';
+//     document.querySelector("#IATADestino > input").value = 'MOW';
+//     document.querySelector("#dataChegada > input").value = '';
+//     document.querySelector("#dataPartida > input").value = '';
+// });

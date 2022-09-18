@@ -22,7 +22,9 @@ function adicionaMaisInformações(cidade){
 
     let buttonPartiu = document.createElement("button");
     buttonPartiu.innerHTML = "Partiu!";
-    buttonPartiu.className = "botao";
+    buttonPartiu.style.margin = "10px";    
+    buttonPartiu.classList.add("center");
+    buttonPartiu.classList.add("botao");
     
     buttonPartiu.onclick = function () {
         sessionStorage.setItem("cidade-pais", JSON.stringify(cidade['name'] + " - " + cidade['pais']));
