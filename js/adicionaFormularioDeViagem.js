@@ -2,31 +2,15 @@ let cidade = JSON.parse(sessionStorage.getItem("cidade-pais"));
 let voosAPI;
 
 function preencheCidade (cidade){
-    let div = document.getElementById("formularioDeViagem");    
-    let label = document.createElement("label");
-    let input = document.createElement("input");
-    let br = document.createElement("br");
-    let br2 = document.createElement("br");
-    
-    input.id = "Cidade-País"
-    input.name = "Cidade-País"
-    input.type = "text";
-    input.size = 40;
-    input.value = cidade;
+    let cbCidade = document.getElementById("cidadePais");
 
-    label.textContent = "Cidade - País"
-    
-    div.appendChild(label);
-    div.appendChild(input);
-    div.appendChild(br);
-    div.appendChild(br2);
-
+    console.log(cidade);
+    cbCidade.value = cidade;
 }
 
 preencheCidade(cidade);
 
 pesquisar.addEventListener("click", async function() {
-    //let moeda = document.querySelector("#moeda1 > input").value;
     let moeda = "BRL";
     let origem = document.querySelector("#IATAOrigem > input").value;
     let destino = document.querySelector("#IATADestino > input").value;

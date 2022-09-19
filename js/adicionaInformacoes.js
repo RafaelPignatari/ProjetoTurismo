@@ -6,19 +6,22 @@ function adicionaMaisInformações(cidade){
     pHistorico.innerHTML = cidade['historico'];
 
     let spanIdiomas = document.createElement("span");
-    spanIdiomas.innerHTML = "<strong>Idiomas:</strong>" + cidade['idioma'] + "<br>";
+    spanIdiomas.innerHTML = "<strong>Idiomas:</strong> " + cidade['idioma'] + "<br>";
 
     let spanClima = document.createElement("span");
-    spanClima.innerHTML = "<strong>Clima:</strong>" + cidade['temperatura'] + "C° <br>";
+    spanClima.innerHTML = "<strong>Clima:</strong> " + cidade['temperatura'] + "C° <br>";
 
     let spanMoeda = document.createElement("span");
-    spanMoeda.innerHTML = "<strong>Moeda:</strong>" + cidade['moeda'] + "<br>";
+    spanMoeda.innerHTML = "<strong>Moeda:</strong> " + cidade['moeda'] + "<br>";
+
+    let spanDinheiroConvertido = document.createElement("span");
+    spanDinheiroConvertido.innerHTML = "<strong>Dinheiro disponível para gastar:</strong> " + cidade['dinheiroDisponivel'] + "<br>";
 
     let spanNomePais = document.createElement("span");
-    spanNomePais.innerHTML = "<strong>Nome do país:</strong>" + cidade['pais'] + "<br>";
+    spanNomePais.innerHTML = "<strong>Nome do país:</strong> " + cidade['pais'] + "<br>";
 
     let spanNomeCidade = document.createElement("span");
-    spanNomeCidade.innerHTML = "<strong>Nome da cidade:</strong>" + cidade['name'] + "<br>";
+    spanNomeCidade.innerHTML = "<strong>Nome da cidade:</strong> " + cidade['name'] + "<br>";
 
     let buttonPartiu = document.createElement("button");
     buttonPartiu.innerHTML = "Partiu!";
@@ -35,6 +38,7 @@ function adicionaMaisInformações(cidade){
     divMaisInformacoes.appendChild(spanNomeCidade);
     divMaisInformacoes.appendChild(spanIdiomas);
     divMaisInformacoes.appendChild(spanMoeda);
+    divMaisInformacoes.appendChild(spanDinheiroConvertido);
     divMaisInformacoes.appendChild(spanClima);
     divMaisInformacoes.appendChild(pHistorico);
     divMaisInformacoes.appendChild(buttonPartiu);
