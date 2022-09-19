@@ -64,7 +64,7 @@ function filtraCidadesPorClima(cidades, clima) {
     let qtdCidades = cidades.length;
 
     if (qtdCidades < 4)
-        return;
+        return cidades;
 
     cidades.sort(function(a, b) {
         return b['temperatura'] - a['temperatura']
