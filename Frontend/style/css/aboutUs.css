@@ -1,0 +1,12 @@
+#about-screen{
+    margin-top: 50px;
+    min-height: 55%;
+    min-width: 55%;
+}
+.line{
+    display: flex;
+    flex-flow: row wrap;
+}
+.column-50 {
+    width: 50%;
+}

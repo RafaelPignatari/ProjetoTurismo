@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Partiu!!</title>
+
+        <link rel="stylesheet" href="../style/css/turistando.css">
+        <link rel="stylesheet" href="https://fonts.google.com/specimen/Source+Sans+Pro">
+        <link rel="icon" href="../style/images/iconSite.png">
+    </head>
+    <body>
+        <ul id="navPrincipal">
+            <li><label id="tituloSite">Turistando</label></li>
+            <li class="active"><a href="index.html">Principal</a></li>
+            <li><a href="aboutUs.html">Sobre nós</a></li>
+            <li style="float:right"><a href="">Entrar</a></li>
+            <li style="float:right"><a href="">Cadastrar-se</a></li>
+        </ul>
+        <div class="principal styledDiv">
+            <h1>Partiu!!</h1>
+            <p>Preencha as informações abaixo e receba informações de preços e datas para sua viagem:</p>
+            
+            <div id="formularioDeViagem">
+                <!-- <div id="moeda1">
+                    <label>Moeda</label>
+                    <input type="text" name="moeda1" size="40"><br><br> 
+                </div> -->
+                <div id="IATAOrigem">           
+                    <label>Código IATA do Local de Origem (Obrigatório)</label>
+                    <input type="text" name="IATAOrigem" size="40"><br><br>
+                </div>
+                <div id="IATADestino"> 
+                    <label>Código IATA do Local de Destino (Obrigatório)</label>
+                    <input type="text" name="IATADestino" size="40"><br><br>
+                </div>
+                <div id="dataChegada">
+                    <label>Data de Chegada</label>
+                    <input type="text" name="dataChegada" size="40"><br><br>
+                </div>
+                <div id="dataPartida">
+                    <label>Data de Partida</label>
+                    <input type="text" name="dataPartida" size="40"><br><br>
+                </div>
+                <div>
+                    <label>Cidade-País</label>
+                    <input type="text" id="cidadePais" size="40" readonly><br><br>
+                </div>
+
+                <button class="center botao" id="pesquisar" style="margin: 10px">Pesquisar</button>
+            </div>
+        </div>
+
+        <script src="../js/adicionaFormularioDeViagem.js"></script>
+        <script src="../js/metodos-APIs.js"></script>
+
+    </body>
+</html>
