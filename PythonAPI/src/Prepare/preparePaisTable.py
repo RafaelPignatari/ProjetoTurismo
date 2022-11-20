@@ -2,10 +2,12 @@ import requests
 import mysql.connector
 
 mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="root",
-  database=" mydatabase"
+    host="turistando-python-database.mysql.database.azure.com",
+    user="roott@turistando-python-database",
+    password="Turistando7@",
+    database="pythonapi",
+    client_flags= [mysql.connector.ClientFlag.SSL],
+    ssl_ca= "PythonAPI\src\Prepare\DigiCertGlobalRootG2.crt.pem"
 )
 mycursor = mydb.cursor()
 
