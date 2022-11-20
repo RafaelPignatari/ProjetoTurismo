@@ -8,13 +8,16 @@ mydb = mysql.connector.connect(
 )
 mycursor = mydb.cursor()
 
-def insertValue(value):
-    sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
-    mycursor.execute(sql, value)
-    mydb.commit()
+def getContinente():
+    mycursor.execute("SELECT DISTINCT(continente) FROM pais;")
+    myresult = mycursor.fetchall()
+    return myresult
 
-def getAllFromTable(table):
-    mycursor.execute("SELECT * FROM " + table)
+def getIdiomasByContinente(continente):
+    mycursor.execute("SELECT DISTINCT(l.nome) FROM paisLingua pl" +
+    + "INNER JOIN pais p ON pl.paisId = p.iso"
+    + "INNER JOIN lingua l ON pl.linguaId = l.id"
+    + "WHERE continente = %s;", [continente])
     myresult = mycursor.fetchall()
     return myresult
 
@@ -22,11 +25,3 @@ def getAllFromTableById(table, id):
     mycursor.execute("SELECT * FROM " + table + " WHERE id = %s", id)
     myresult = mycursor.fetchone()
     return myresult
-
-def deleteFromTableById(table, id):
-    mycursor.execute("DELETE FROM " + table + " WHERE id = %s", id)
-    mydb.commit()
-
-def UpdateLineFromTableById(table, values):
-    mycursor.execute("UPDATE " + table + " SET name = %s, address = %s WHERE id = %s", values)
-    mydb.commit()
