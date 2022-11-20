@@ -110,3 +110,9 @@ async function getFlights(moeda, origem, destino, chegada, partida) {
         return "Nenhum voo disponível com os dados enviados"
     }
 }
+
+aysnc function enviaDadosCadastro() {
+    console.log(document.getElementById('nome_cad').value);
+    console.log(document.getElementById('email_cad').value);
+    console.log(document.getElementById('senha_cad').value);
+}

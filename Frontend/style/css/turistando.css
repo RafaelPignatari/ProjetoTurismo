@@ -1,6 +1,7 @@
 body{
     background-image: url("../images/bgHome.jpg");
     background-repeat: no-repeat;
+    background-size: cover;
     font-family: "Source Sans Pro", sans-serif;
 }
 
