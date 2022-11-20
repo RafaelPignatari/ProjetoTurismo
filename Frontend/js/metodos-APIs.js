@@ -5,6 +5,22 @@ async function getIBGECountryInfo() {
     return responseJSON
 }
 
+async function getIdiomasByContinente(continente) {
+    let url = "http://127.0.0.1:5000/idiomas?continente=" + continente;
+    const responseJSON = await fetch(url, {
+    }).then((response) => response.json());
+    
+    return responseJSON
+}
+
+async function getCidades(continente, idioma) {
+    let url = "http://127.0.0.1:5000/cidades?continente=" + continente + "&idioma=" + idioma;
+    const responseJSON = await fetch(url, {
+    }).then((response) => response.json());
+    
+    return responseJSON
+}
+
 async function getCitiesbyCountry(country) {
     try {
         const responseJSON = await fetch("https://api.api-ninjas.com/v1/city?limit=3&country=" + country, {

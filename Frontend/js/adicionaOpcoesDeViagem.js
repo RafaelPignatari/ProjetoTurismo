@@ -8,7 +8,7 @@ function adicionaMaisInformações(cidades){
         spanNomePais.innerHTML = "<strong>País:</strong>" + cidade['pais'] + " ";
 
         let spanNomeCidade = document.createElement("span");
-        spanNomeCidade.innerHTML = "<strong>Cidade:</strong>" + cidade['name'] + " ";
+        spanNomeCidade.innerHTML = "<strong>Cidade:</strong>" + cidade['cidade'] + " ";
 
         let buttonMaisInformações = document.createElement("button");
         buttonMaisInformações.innerHTML = "É esse!";

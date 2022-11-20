@@ -21,7 +21,7 @@ function adicionaMaisInformações(cidade){
     spanNomePais.innerHTML = "<strong>Nome do país:</strong> " + cidade['pais'] + "<br>";
 
     let spanNomeCidade = document.createElement("span");
-    spanNomeCidade.innerHTML = "<strong>Nome da cidade:</strong> " + cidade['name'] + "<br>";
+    spanNomeCidade.innerHTML = "<strong>Nome da cidade:</strong> " + cidade['cidade'] + "<br>";
 
     let buttonPartiu = document.createElement("button");
     buttonPartiu.innerHTML = "Partiu!";
@@ -30,7 +30,7 @@ function adicionaMaisInformações(cidade){
     buttonPartiu.classList.add("botao");
     
     buttonPartiu.onclick = function () {
-        sessionStorage.setItem("cidade-pais", JSON.stringify(cidade['name'] + " - " + cidade['pais']));
+        sessionStorage.setItem("cidade-pais", JSON.stringify(cidade['cidade'] + " - " + cidade['pais']));
         window.location.href = "../Views/formularioDeViagem.html";
     };
 

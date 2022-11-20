@@ -18,15 +18,10 @@ function limitaIdiomas(idiomas, limite) {
 }
 
 async function getLanguageFromContinent() {
-    paises = await getIBGECountryInfo();
-    let paisesFiltroContinental;
     let continenteValue = document.querySelector("#continente > input:checked").value;
-    let idiomas;
-
-    paisesFiltroContinental = paises.filter((obj) => obj['localizacao']['regiao']['nome'] == continenteValue)
-    idiomas = getAllCountryLanguages(paisesFiltroContinental).sort();
+    let idiomas = await getIdiomasByContinente(continenteValue);
     limitaIdiomas(idiomas, 15)
-    return idiomas;
+    return idiomas.map(idioma => idioma[0]);
 }
 
 buttonEnviar.addEventListener("click", async function(event) {
@@ -36,27 +31,23 @@ buttonEnviar.addEventListener("click", async function(event) {
     let idiomaEscolhido = document.querySelector("#idioma > input:checked").value;
     let climaEscolhido = document.querySelector("#clima > input:checked").value;
     let dinheiroEscolhido = document.querySelector("#dinheiro > input:checked").value;
-    let paisesFiltrados = paises.filter((pais) => pais['localizacao']['regiao']['nome'] == continenteEscolhido && pais['linguas'][0]['nome'] == idiomaEscolhido);
 
     showLoadDiv();
-    for (let i in paisesFiltrados) {
-        let codigoPais = paisesFiltrados[i].id["ISO-3166-1-ALPHA-2"];
-        let unidadeMonetariaPais = paisesFiltrados[i]["unidades-monetarias"][0].id["ISO-4217-ALPHA"];
-        let cidadesAPI = await getCitiesbyCountry(codigoPais);
+    cidades = await getCidades(continenteEscolhido, idiomaEscolhido);
+    cidades = cidades.map(cidade => {
+        return  {
+            "cidade": cidade[0],
+            "pais": cidade[1],
+            "idioma": cidade[2],
+            "moeda": cidade[3],
+            "temperatura": cidade[4],
+            "historico": cidade[5]
+    }});
 
-        for (let number in cidadesAPI) {
-            clima = await getWheaterInfo(cidadesAPI[number]["name"]);
-            valorMonetario = await getMonetaryInfo(unidadeMonetariaPais);
-            cidadesAPI[number]['temperatura'] = clima['temperatura'];
-            cidadesAPI[number]['pais'] = paisesFiltrados[i].nome.abreviado;
-            cidadesAPI[number]['historico'] = paisesFiltrados[i].historico;
-            cidadesAPI[number]['idioma'] = idiomaEscolhido;
-            cidadesAPI[number]['moeda'] = valorMonetario;
-            cidadesAPI[number]['dinheiroDisponivel'] = valorMonetario != "-" ? ((valorMonetario * dinheiroEscolhido) + " " + unidadeMonetariaPais) : "-";
-        }
-        
-        cidades = cidades.concat(cidadesAPI);
-    };
+    for (let number in cidades) {
+        valorMonetario = await getMonetaryInfo(cidades[number]['moeda']);
+        cidades[number]['dinheiroDisponivel'] = valorMonetario != "-" ? ((dinheiroEscolhido/ valorMonetario).toFixed(2) + " " + cidades[number]['moeda']) : "-";
+    }
 
     cidades = filtraCidadesPorClima(cidades, climaEscolhido);
 

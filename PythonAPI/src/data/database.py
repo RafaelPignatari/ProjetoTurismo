@@ -24,7 +24,7 @@ def getIdiomasByContinente(continente):
     return myresult
 
 def getCidades(continente, idioma):
-    mycursor.execute("SELECT c.nome, p.nome,l.nome, p.moeda, t.quartoTrimestre FROM cidade c" 
+    mycursor.execute("SELECT c.nome, p.nome,l.nome, p.moeda, t.quartoTrimestre, p.historico FROM cidade c" 
     + " INNER JOIN pais p ON p.iso = c.pais"
     + " INNER JOIN paislingua pl ON pl.paisId = p.iso"
     + " INNER JOIN lingua l ON l.id = pl.linguaId"
