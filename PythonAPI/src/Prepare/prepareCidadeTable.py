@@ -6,8 +6,7 @@ mydb = mysql.connector.connect(
     user="roott@turistando-python-database",
     password="Turistando7@",
     database="pythonapi",
-    client_flags= [mysql.connector.ClientFlag.SSL],
-    ssl_ca= "PythonAPI\src\Prepare\DigiCertGlobalRootG2.crt.pem"
+    client_flags= [mysql.connector.ClientFlag.SSL]
 )
 mycursor = mydb.cursor()
 
