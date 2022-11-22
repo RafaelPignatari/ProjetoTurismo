@@ -8,10 +8,6 @@ config = {
   'client_flags': [mysql.connector.ClientFlag.SSL]
 }
 
-# Construct connection string
-mydb = mysql.connector.connect(**config)
-mycursor = mydb.cursor()
-
 def getContinente():
     query = "SELECT DISTINCT(continente) FROM pais;"
     return executeQuery(query)
@@ -26,7 +22,8 @@ def getCidades(continente, idioma):
 
 def executeQuery(query, values = []):
     mydb = mysql.connector.connect(**config)
+    mycursor = mydb.cursor()
     mycursor.execute(query, values)
-    mydb.close()
     myresult = mycursor.fetchall()
+    mydb.close()
     return myresult
