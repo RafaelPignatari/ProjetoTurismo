@@ -6,7 +6,7 @@ async function getIBGECountryInfo() {
 }
 
 async function getIdiomasByContinente(continente) {
-    let url = "http://127.0.0.1:5000/idiomas?continente=" + continente;
+    let url = "https://countryinfoturismo.azurewebsites.net/idiomas?continente=" + continente;
     const responseJSON = await fetch(url, {
     }).then((response) => response.json());
     
@@ -14,7 +14,7 @@ async function getIdiomasByContinente(continente) {
 }
 
 async function getCidades(continente, idioma) {
-    let url = "http://127.0.0.1:5000/cidades?continente=" + continente + "&idioma=" + idioma;
+    let url = "https://countryinfoturismo.azurewebsites.net/cidades?continente=" + continente + "&idioma=" + idioma;
     const responseJSON = await fetch(url, {
     }).then((response) => response.json());
     
@@ -111,7 +111,7 @@ async function getFlights(moeda, origem, destino, chegada, partida) {
     }
 }
 
-aysnc function enviaDadosCadastro() {
+async function enviaDadosCadastro() {
     console.log(document.getElementById('nome_cad').value);
     console.log(document.getElementById('email_cad').value);
     console.log(document.getElementById('senha_cad').value);
