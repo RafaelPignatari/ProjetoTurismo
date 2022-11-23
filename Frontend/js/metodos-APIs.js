@@ -1,3 +1,5 @@
+const { PassThrough } = require("stream");
+
 async function getIBGECountryInfo() {
     const responseJSON = await fetch("https://servicodados.ibge.gov.br/api/v1/paises/", {
 }).then((response) => response.json());
@@ -120,7 +122,11 @@ function enviaDadosCadastro() {
     xhr.open("POST", 'https://cadastroapijava.azurewebsites.net/api/usuario/salvar', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(data));
-    fazLogin();
+    do {
+        
+    } while (xhr.status != 200);
+    sessionStorage.setItem('usuario', data['nome']);
+    window.location.href = "../Views/index.html";
 }
 
 async function fazLogin() {
@@ -137,5 +143,5 @@ async function fazLogin() {
     var usuario = JSON.parse(xmlHttp.responseText);
     var nome = usuario['nome'];
     sessionStorage.setItem('usuario', nome);
-    window.location.href = '../Views/index.html';
+    window.location.href = "../Views/index.html";
 }

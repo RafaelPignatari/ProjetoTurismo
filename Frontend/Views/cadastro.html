@@ -20,7 +20,7 @@
         </ul>
         <h2 style="text-align: center;"><b>Cadastrar</b></h1>
             <div class="principal" id="principal">
-                <form class="styledDiv" id="form-quiz" style="text-align: center;" onsubmit="enviaDadosCadastro()">
+                <form class="styledDiv" id="form-quiz" style="text-align: center;" onsubmit="event.preventDefault();enviaDadosCadastro();">
                     <p> 
                         <label for="nome_cad">Seu nome</label>
                         <input id="nome_cad" name="nome_cad" required="required" type="text" maxlength = "50" placeholder="nome" />
@@ -44,5 +44,6 @@
             </div>
         </div>
         <script src="../js/metodos-APIs.js"></script>
+        <script src="../js/stopRelogin.js"></script>
     </body>
 </html>
