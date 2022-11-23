@@ -21,11 +21,3 @@ pesquisar.addEventListener("click", async function() {
     sessionStorage.setItem("voosAPI", JSON.stringify(voosAPI));
     window.location.href = "../Views/voos.html";    
 });
-
-// preencher.addEventListener("click", function() {
-//     //document.querySelector("#moeda1 > input").value = 'BRL';
-//     document.querySelector("#IATAOrigem > input").value = 'LED';
-//     document.querySelector("#IATADestino > input").value = 'MOW';
-//     document.querySelector("#dataChegada > input").value = '';
-//     document.querySelector("#dataPartida > input").value = '';
-// });
