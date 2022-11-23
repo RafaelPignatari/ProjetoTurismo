@@ -4,6 +4,7 @@ import com.turistando.social.api.controller.dto.UsuarioRq;
 import com.turistando.social.api.controller.dto.UsuarioRs;
 import com.turistando.social.api.model.UsuarioModel;
 import com.turistando.social.api.repository.UsuarioRepository;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class UsuarioController {
         this.repository = repository;
     }
 
-    @GetMapping(path = "/listar")
+    @GetMapping(path = "/listar",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<UsuarioRs>> getAll(){
         var usuarios = repository.findAll();
         return ResponseEntity.ok(usuarios
@@ -29,14 +30,14 @@ public class UsuarioController {
     }
 
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UsuarioModel> consultar(@PathVariable("id") Integer id) throws Exception {
         var u = repository.findById(id);
         if(!u.isPresent())
             return ResponseEntity.notFound().build();
         return ResponseEntity.ok(u.get());}
 
-    @PostMapping(path = "/salvar")
+    @PostMapping(path = "/salvar", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UsuarioRs> salvar(@RequestBody UsuarioRq usuarioEntrada){
         var u = new UsuarioModel();
         u.setNome(usuarioEntrada.getNome());
@@ -57,7 +58,7 @@ public class UsuarioController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UsuarioRs> atualizar(@PathVariable Integer id, @RequestBody UsuarioRq usuario) throws Exception {
         var u = repository.findById(id);
 
@@ -74,7 +75,7 @@ public class UsuarioController {
         return ResponseEntity.ok(UsuarioRs.converter(usuarioSave));
     }
 
-    @GetMapping("/login")
+    @GetMapping(path = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UsuarioRs> login(@RequestParam("login") String login, @RequestParam("senha") String senha){
         var usuarios = repository.findAll();
         var usuarioRetorno = usuarios
