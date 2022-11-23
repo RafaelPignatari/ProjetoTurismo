@@ -4,12 +4,12 @@ import com.turistando.social.api.controller.dto.UsuarioRq;
 import com.turistando.social.api.controller.dto.UsuarioRs;
 import com.turistando.social.api.model.UsuarioModel;
 import com.turistando.social.api.repository.UsuarioRepository;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.http.MediaType;
 
 @RestController
 @RequestMapping("/api/usuario")
@@ -20,7 +20,7 @@ public class UsuarioController {
         this.repository = repository;
     }
 
-    @GetMapping(path = "/listar",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/listar", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<UsuarioRs>> getAll(){
         var usuarios = repository.findAll();
         return ResponseEntity.ok(usuarios
@@ -37,7 +37,7 @@ public class UsuarioController {
             return ResponseEntity.notFound().build();
         return ResponseEntity.ok(u.get());}
 
-    @PostMapping(path = "/salvar", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/salvar")
     public ResponseEntity<UsuarioRs> salvar(@RequestBody UsuarioRq usuarioEntrada){
         var u = new UsuarioModel();
         u.setNome(usuarioEntrada.getNome());
@@ -58,7 +58,7 @@ public class UsuarioController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/{id}")
     public ResponseEntity<UsuarioRs> atualizar(@PathVariable Integer id, @RequestBody UsuarioRq usuario) throws Exception {
         var u = repository.findById(id);
 
