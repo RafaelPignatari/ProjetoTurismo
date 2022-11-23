@@ -128,10 +128,14 @@ async function fazLogin() {
         login: document.getElementById('login_cad').value,
         senha: document.getElementById('senha_cad').value,
     };    
-    console.log(data);
+
     let url = 'https://cadastroapijava.azurewebsites.net/api/usuario/login?login=' + data['login'] + '&senha=' + data['senha'];
-    const responseJSON = await fetch(url, {
-    }).then((response) => { console.log(response.status);return response.text();});
-    
-    console.log(responseJSON);
-}   
+
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", url, false ); // false for synchronous request
+    xmlHttp.send( null );
+    var usuario = JSON.parse(xmlHttp.responseText);
+    var nome = usuario['nome'];
+    sessionStorage.setItem('usuario', nome);
+    window.location.href = '../Views/index.html';
+}
