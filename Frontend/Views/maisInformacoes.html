@@ -5,25 +5,28 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Opções de viagem</title>
-
         <link rel="stylesheet" href="../style/css/turistando.css">
         <!-- <link rel="stylesheet" href="../style/css/maisInfomacoes.css"> -->
     </head>
-    <body>
+    <body onload="verificaSessaoUsuario()">
         <ul id="navPrincipal">
             <li><label id="tituloSite">Turistando</label></li>
             <li class="active"><a href="index.html">Principal</a></li>
             <li><a href="aboutUs.html">Sobre nós</a></li>
-            <li style="float:right"><a href="login.html">Entrar</a></li>
-            <li style="float:right"><a href="cadastro.html">Cadastrar-se</a></li>
+            <div id="divUserAccess">
+                <li style="float:right"><a href="login.html">Entrar</a></li>
+                <li style="float:right"><a href="cadastro.html">Cadastrar-se</a></li>
+            </div>
+            <div id="divUserName">
+                <li style="float:right"><label id="labelName"></label></li>
+            </div>
         </ul>
         <div class="principal">
             <div class="styledDiv"  id="maisInformacoes">
                 <div class="centerButton"></div>
             </div>
         </div>
-
-        
         <script src="../js/adicionaInformacoes.js"></script>
+        <script src="../js/sessaoUsuario.js"></script>
     </body>
 </html>

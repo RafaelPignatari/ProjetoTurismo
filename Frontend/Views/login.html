@@ -12,21 +12,22 @@
 </head>
 <body>
     <ul id="navPrincipal">
-        <li><label id="tituloSite">Turistando</label></li>
-        <li><a href="index.html">Principal</a></li>
-        <li class="active"><a href="aboutUs.html">Sobre nós</a></li>
-        <li style="float:right"><a href="">Entrar</a></li>
-        <li style="float:right"><a href="cadastro.html">Cadastrar-se</a></li>
-    </ul>
-    <h2 style="text-align: center;"><b>Entrar</b></h1>
-        <div class="principal" id="principal">
-            <form class="styledDiv" id="form-quiz" style="text-align: center;">
-                    <label for="email_cad">Digite seu Login</label>
-                    <input id="email_cad" name="email_cad" required="required" type="email"/> 
+            <li><label id="tituloSite">Turistando</label></li>
+            <li><a href="index.html">Principal</a></li>
+            <li><a href="aboutUs.html">Sobre nós</a></li>
+            <li class="active" style="float:right"><a href="">Entrar</a></li>
+            <li style="float:right"><a href="cadastro.html">Cadastrar-se</a></li>
+        </ul>
+        <button onclick="fazLogin()">Click me</button>
+        <h2 style="text-align: center;"><b>Entrar</b></h1>
+            <div class="principal" id="principal">
+                <form class="styledDiv" id="form-quiz" style="text-align: center;">
+                    <label for="login_cad">Digite seu Login</label>
+                    <input id="login_cad" name="login_cad" required="required" type="text" maxlength = "10" placeholder="LoginTeste"/> 
                 </p>
                 <p> 
                     <label for="senha_cad">Digite sua Senha</label>
-                    <input id="senha_cad" name="senha_cad" required="required" type="password"/>
+                    <input id="senha_cad" name="senha_cad" required="required"  type="password" maxlength = "10" placeholder="ex. 1234"/>
                 </p>
                 <p> 
                     <input type="submit" value="Entrar"/> 
@@ -34,6 +35,7 @@
             </form>
         </div>
     </div>
-</div>
+    </div>
+    <script src="../js/metodos-APIs.js"></script>
 </body>
 </html>

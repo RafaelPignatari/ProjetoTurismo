@@ -14,9 +14,9 @@
         <ul id="navPrincipal">
             <li><label id="tituloSite">Turistando</label></li>
             <li><a href="index.html">Principal</a></li>
-            <li class="active"><a href="aboutUs.html">Sobre nós</a></li>
+            <li><a href="aboutUs.html">Sobre nós</a></li>
             <li style="float:right"><a href="login.html">Entrar</a></li>
-            <li style="float:right"><a href="">Cadastrar-se</a></li>
+            <li class="active" style="float:right"><a href="">Cadastrar-se</a></li>
         </ul>
         <h2 style="text-align: center;"><b>Cadastrar</b></h1>
             <button onclick="enviaDadosCadastro()">Click me</button>
@@ -24,15 +24,19 @@
                 <form class="styledDiv" id="form-quiz" style="text-align: center;" onsubmit="enviaDadosCadastro()">
                     <p> 
                         <label for="nome_cad">Seu nome</label>
-                        <input id="nome_cad" name="nome_cad" required="required" type="text" placeholder="nome" />
+                        <input id="nome_cad" name="nome_cad" required="required" type="text" maxlength = "50" placeholder="nome" />
                     </p>
                     <p> 
-                        <label for="email_cad">Seu e-mail</label>
-                        <input id="email_cad" name="email_cad" required="required" type="email" placeholder="contato@htmlecsspro.com"/> 
+                        <label for="login_cad">Seu login</label>
+                        <input id="login_cad" name="login_cad" required="required" type="text" maxlength = "10" placeholder="LoginTeste"/> 
                     </p>
                     <p> 
                         <label for="senha_cad">Sua senha</label>
-                        <input id="senha_cad" name="senha_cad" required="required" type="password" placeholder="ex. 1234"/>
+                        <input id="senha_cad" name="senha_cad" required="required"  type="password" maxlength = "10" placeholder="ex. 1234"/>
+                    </p>
+                    <p> 
+                        <label for="idade_cad">Sua idade (Anos)</label>
+                        <input id="idade_cad" name="idade_cad" required="required" type="number" min = "1"  max "999" placeholder="22"/>
                     </p>
                     <p> 
                         <input type="submit" value="Cadastrar"/> 

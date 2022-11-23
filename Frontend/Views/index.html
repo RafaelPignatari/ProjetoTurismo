@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://fonts.google.com/specimen/Source+Sans+Pro">
         <link rel="icon" href="../style/images/iconSite.png">
     </head>
-    <body>
+    <body onload="verificaSessaoUsuario()">
         <div style="display:none;" id="loader">
             <img id="loading" src="../style/images/loading.gif" alt="this slowpoke moves"  width="250" />
         </div>
@@ -19,8 +19,13 @@
             <li><label id="tituloSite">Turistando</label></li>
             <li class="active"><a href="index.html">Principal</a></li>
             <li><a href="aboutUs.html">Sobre nós</a></li>
-            <li style="float:right"><a href="login.html">Entrar</a></li>
-            <li style="float:right"><a href="cadastro.html">Cadastrar-se</a></li>
+            <div id="divUserAccess">
+                <li style="float:right"><a href="login.html">Entrar</a></li>
+                <li style="float:right"><a href="cadastro.html">Cadastrar-se</a></li>
+            </div>
+            <div id="divUserName">
+                <li style="float:right"><label id="labelName"></label></li>
+            </div>
         </ul>
         <div class="principal" id="principal">
             <form class="styledDiv" id="form-quiz">
@@ -79,5 +84,6 @@
         </div>
         <script src="../js/metodos-APIs.js"></script>
         <script src="../js/main.js"></script>
+        <script src="../js/sessaoUsuario.js"></script>
     </body>
 </html>

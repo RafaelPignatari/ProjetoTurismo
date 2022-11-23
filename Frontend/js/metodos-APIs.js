@@ -1,8 +1,8 @@
 async function getIBGECountryInfo() {
     const responseJSON = await fetch("https://servicodados.ibge.gov.br/api/v1/paises/", {
-    }).then((response) => response.json());
-    
-    return responseJSON
+}).then((response) => response.json());
+
+return responseJSON
 }
 
 async function getIdiomasByContinente(continente) {
@@ -24,36 +24,36 @@ async function getCidades(continente, idioma) {
 async function getCitiesbyCountry(country) {
     try {
         const responseJSON = await fetch("https://api.api-ninjas.com/v1/city?limit=3&country=" + country, {
-            headers: {
-                'X-Api-Key': 'ltGCHBdbFL/PPXQTBlyBww==FxmgaTRlWM5qZXAq'
-            }
-        }).then((response) => response.json());
-        return responseJSON;
-    }
-    catch {
-        return "-"
-    }
+        headers: {
+            'X-Api-Key': 'ltGCHBdbFL/PPXQTBlyBww==FxmgaTRlWM5qZXAq'
+        }
+    }).then((response) => response.json());
+    return responseJSON;
+}
+catch {
+    return "-"
+}
 }
 
 async function getWheaterInfo(city) {
     responseFinal = {};
     try {
         const responseJSON = await fetch('https://api.api-ninjas.com/v1/weather?city=' + city, {
-            headers: {
-                'X-Api-Key': 'ltGCHBdbFL/PPXQTBlyBww==FxmgaTRlWM5qZXAq'
-            }
-        }).then((reponse) => reponse.json());
-        if (typeof(responseJSON['temp']) != "undefined") {
-            responseFinal['temperatura'] = responseJSON['temp'];
-            return responseFinal;
-        } else {
-            responseFinal['temperatura'] = '-';
-            return responseFinal;
+        headers: {
+            'X-Api-Key': 'ltGCHBdbFL/PPXQTBlyBww==FxmgaTRlWM5qZXAq'
         }
+    }).then((reponse) => reponse.json());
+    if (typeof(responseJSON['temp']) != "undefined") {
+        responseFinal['temperatura'] = responseJSON['temp'];
+        return responseFinal;
+    } else {
+        responseFinal['temperatura'] = '-';
+        return responseFinal;
     }
-    catch {
-        return responseFinal['temperatura'] = " - ";
-    }
+}
+catch {
+    return responseFinal['temperatura'] = " - ";
+}
 }
 
 async function getMonetaryInfo(moeda) {
@@ -62,28 +62,28 @@ async function getMonetaryInfo(moeda) {
         if(moneyToConvert != 'BRL') {
             var BRLTomoneyToConvert =moneyToConvert +'-BRL';
             const responseJSON = await fetch('https://economia.awesomeapi.com.br/last/' + BRLTomoneyToConvert, {
-            }).then((reponse) => reponse.json());
-            return responseJSON[moeda + 'BRL']['high'];
-        }
-        else {
-            return "1"
-        }
-    } 
-    catch {
-        return "-"
+        }).then((reponse) => reponse.json());
+        return responseJSON[moeda + 'BRL']['high'];
     }
+    else {
+        return "1"
+    }
+} 
+catch {
+    return "-"
+}
 }
 
 function getAllCountryLanguages(responseJSON) {
     let nameCollection = [];
-
+    
     for (let key in responseJSON) {
         if(responseJSON[key].linguas)
         languages = responseJSON[key].linguas;
         for (let key2 in languages) {
             languageString = languages[key2].nome;
             if (!nameCollection.includes(languageString) && languageString != undefined)
-                nameCollection.push(languageString);
+            nameCollection.push(languageString);
         }
     }
     
@@ -97,9 +97,9 @@ async function getFlights(moeda, origem, destino) {
         const responseJSON = await fetch
         (https , {
             headers: {
-            'X-Access-Token': '6a5137d6f8f202bf06af2a39771f56b1',
-            'X-RapidAPI-Key': '2af99389efmsh21438fb8207ce25p11f7ffjsn11881ae5aa85'
-        }
+                'X-Access-Token': '6a5137d6f8f202bf06af2a39771f56b1',
+                'X-RapidAPI-Key': '2af99389efmsh21438fb8207ce25p11f7ffjsn11881ae5aa85'
+            }
         }).then((reponse) => reponse.json());
         return responseJSON;
     } 
@@ -108,8 +108,32 @@ async function getFlights(moeda, origem, destino) {
     }
 }
 
-async function enviaDadosCadastro() {
-    console.log(document.getElementById('nome_cad').value);
-    console.log(document.getElementById('email_cad').value);
+function enviaDadosCadastro() {
+    let data = {
+        nome: document.getElementById('nome_cad').value,
+        login: document.getElementById('login_cad').value,
+        senha: document.getElementById('senha_cad').value,
+        idade: document.getElementById('idade_cad').value,
+    };
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", 'https://cadastroapijava.azurewebsites.net/api/usuario/salvar', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(data));
+    }
+
+async function fazLogin() {
+    console.log(document.getElementById('login_cad').value);
     console.log(document.getElementById('senha_cad').value);
-}
+    let data = {
+        login: document.getElementById('login_cad').value,
+        senha: document.getElementById('senha_cad').value,
+    };
+    
+    await fetch('localhost:8080/api/usuario/salvar', {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'}, 
+        body: JSON.stringify(data)
+    }).then(res => {
+    });
+}   
