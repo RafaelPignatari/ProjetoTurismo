@@ -11,20 +11,10 @@ public class UsuarioRs {
 
     public static UsuarioRs converter (UsuarioModel u){
         var usuario = new UsuarioRs();
-        usuario.setId(u.getId());
         usuario.setNome(u.getNome());
         usuario.setLogin(u.getLogin());
-        usuario.setSenha(u.getSenha());
         usuario.setIdade(u.getIdade());
         return usuario;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -41,14 +31,6 @@ public class UsuarioRs {
 
     public void setLogin(String login) {
         this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public Integer getIdade() {

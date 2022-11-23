@@ -7,9 +7,7 @@ import com.turistando.social.api.repository.UsuarioRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -22,68 +20,71 @@ public class UsuarioController {
     }
 
     @GetMapping(path = "/listar")
-    public List<UsuarioRs> getAll(){
+    public ResponseEntity<List<UsuarioRs>> getAll(){
         var usuarios = repository.findAll();
-        return usuarios
+        return ResponseEntity.ok(usuarios
                 .stream()
                 .map(UsuarioRs::converter)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 
 
-@GetMapping(path = "/{id}")
-    public Optional<UsuarioModel> consultar(@PathVariable("id") Integer id) throws Exception {
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<UsuarioModel> consultar(@PathVariable("id") Integer id) throws Exception {
         var u = repository.findById(id);
-
-        if(u.isPresent()){
-            return u;
-        }
-        else {
-            //throw abaixo deu erro, não sei pq
-            //throw new Exception("Pessoa não encontrada");
-            return null;
-        }
-}
+        if(!u.isPresent())
+            return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(u.get());}
 
     @PostMapping(path = "/salvar")
-    public void salvar(@RequestBody UsuarioRq usuario){
+    public ResponseEntity<UsuarioRs> salvar(@RequestBody UsuarioRq usuarioEntrada){
         var u = new UsuarioModel();
-        u.setNome(usuario.getNome());
-        u.setLogin(usuario.getLogin());
-        u.setSenha(usuario.getSenha());
-        u.setIdade(usuario.getIdade());
+        u.setNome(usuarioEntrada.getNome());
+        u.setLogin(usuarioEntrada.getLogin());
+        u.setSenha(usuarioEntrada.getSenha());
+        u.setIdade(usuarioEntrada.getIdade());
         repository.save(u);
-
+        return ResponseEntity.ok(UsuarioRs.converter(u));
     }
 
-    @DeleteMapping(path = "/deletar/{id}")
-    public void deletar(@PathVariable("id") Integer id){
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Boolean> deletar(@PathVariable("id") Integer id){
+        var u = repository.findById(id);
+        if (!u.isPresent())
+            return ResponseEntity.notFound().build();
+
         repository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{id}")
-    public void atualizar(@PathVariable Integer id, @RequestBody UsuarioRq usuario) throws Exception {
+    public ResponseEntity<UsuarioRs> atualizar(@PathVariable Integer id, @RequestBody UsuarioRq usuario) throws Exception {
         var u = repository.findById(id);
 
-        if (u.isPresent()){
-            var usuarioSave = u.get();
-            usuarioSave.setNome(usuario.getNome());
-            usuarioSave.setLogin(usuario.getLogin());
-            usuarioSave.setSenha(usuario.getSenha());
-            usuarioSave.setIdade(usuario.getIdade());
-            repository.save(usuarioSave);
-        }
-        else{
-            //throw abaixo deu erro, não sei pq
-            //throw new Exception("Pessoa não encontrada");
-        }
+        if (!u.isPresent())
+            return ResponseEntity.notFound().build();
+
+        var usuarioSave = u.get();
+        usuarioSave.setNome(usuario.getNome());
+        usuarioSave.setLogin(usuario.getLogin());
+        usuarioSave.setSenha(usuario.getSenha());
+        usuarioSave.setIdade(usuario.getIdade());
+        repository.save(usuarioSave);
+
+        return ResponseEntity.ok(UsuarioRs.converter(usuarioSave));
     }
 
-    @GetMapping("/filter")
-    public List<UsuarioRs> obterPorNome(@RequestParam("name") String name){
-        return this.repository.findByNomeContains(name)
+    @GetMapping("/login")
+    public ResponseEntity<UsuarioRs> login(@RequestParam("login") String login, @RequestParam("senha") String senha){
+        var usuarios = repository.findAll();
+        var usuarioRetorno = usuarios
                 .stream()
+                .filter(usuario -> usuario.getLogin().equals(login) && usuario.getSenha().equals(senha))
                 .map(UsuarioRs::converter)
-                .collect(Collectors.toList());
+                .findFirst().orElse(null);
+        if(usuarioRetorno == null)
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok(usuarioRetorno);
     }
 }
