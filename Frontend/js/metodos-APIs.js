@@ -120,20 +120,18 @@ function enviaDadosCadastro() {
     xhr.open("POST", 'https://cadastroapijava.azurewebsites.net/api/usuario/salvar', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(data));
-    }
+    fazLogin();
+}
 
 async function fazLogin() {
-    console.log(document.getElementById('login_cad').value);
-    console.log(document.getElementById('senha_cad').value);
     let data = {
         login: document.getElementById('login_cad').value,
         senha: document.getElementById('senha_cad').value,
-    };
+    };    
+    console.log(data);
+    let url = 'https://cadastroapijava.azurewebsites.net/api/usuario/login?login=' + data['login'] + '&senha=' + data['senha'];
+    const responseJSON = await fetch(url, {
+    }).then((response) => { console.log(response.status);return response.text();});
     
-    await fetch('localhost:8080/api/usuario/salvar', {
-        method: "POST",
-        headers: {'Content-Type': 'application/json'}, 
-        body: JSON.stringify(data)
-    }).then(res => {
-    });
+    console.log(responseJSON);
 }   
